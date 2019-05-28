@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +32,11 @@ public class BurgerPhotosService {
                 HashMap<String,String> photos = burgerPhotos.getPhotos(places);
                 for (Map.Entry<String, String> photo : photos.entrySet()){
                     Photo photo_db = new Photo();
-                    photo_db.setVenueName(photo.getValue());
-                    photo_db.setPhoto_link(photo.getKey());
-                    photoRepository.save(photo_db);
+                    if(isValidURL(photo.getKey())){
+                        photo_db.setVenueName(photo.getValue());
+                        photo_db.setPhoto_link(photo.getKey());
+                        photoRepository.save(photo_db);
+                    }
                 }
                 return photoRepository.findAll();
             }
@@ -42,5 +45,17 @@ public class BurgerPhotosService {
             }
         }
         return null;
+    }
+    public static boolean isValidURL(String urlString)
+    {
+        try
+        {
+            URL url = new URL(urlString);
+            url.toURI();
+            return true;
+        } catch (Exception exception)
+        {
+            return false;
+        }
     }
 }

@@ -17,9 +17,14 @@ public class HelloController {
 
     @RequestMapping("/")
     public String welcome(Model model) {
-        List<Photo> photos = burgerPhotosService.getBurgerPhotos();
+        List<Photo> photos = burgerPhotosService.getBurgerPhotos("index");
         model.addAttribute("photos", photos);
         return "index";
     }
-
+    @RequestMapping("/refresh")
+    public String refresh(Model model){
+        List<Photo> photos = burgerPhotosService.getBurgerPhotos("refresh");
+        model.addAttribute("photos", photos);
+        return "index";
+    }
 }

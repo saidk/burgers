@@ -22,8 +22,8 @@ public class BurgerPhotosService {
     private String clientId = "SGFXH34FPXEDJ3LIOS1USMY34XZWJ2WLW32B1FMEZDC0VQ52";
     private String clientSecret = "1K2QRZZWYDNYYYH53F1W3FSBDV5YXOS1OWRWMLNMOVJ533WB";
 
-    public List<Photo> getBurgerPhotos(){
-        if (photoRepository.findAll().size() != 0){
+    public List<Photo> getBurgerPhotos(String method){
+        if (photoRepository.findAll().size() != 0 && method.equals("index")){
             return photoRepository.findAll();
         }
         else{

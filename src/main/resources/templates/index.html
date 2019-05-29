@@ -17,6 +17,7 @@
 
   <!-- Theme CSS -->
   <link rel="stylesheet" type="text/css" th:href="@{/css/freelancer.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 
 </head>
 
@@ -44,6 +45,7 @@
       </div>
 
       <!-- Masthead Subheading -->
+      <p class="masthead-subheading font-weight-light mb-0"><form style='float:left; padding:5px; height:0px' th:method="get" th:action="@{'/refresh'}"><button href="#" class="myButton">Refresh</button></form></p>
 
     </div>
   </header>

@@ -28,6 +28,7 @@ public class BurgerPhotosService {
         }
         else{
             try {
+                photoRepository.deleteAll();
                 HashMap<String,String> places = burgerPhotos.findPlaces(this.clientId, this.clientSecret);
                 HashMap<String,String> photos = burgerPhotos.getPhotos(places);
                 for (Map.Entry<String, String> photo : photos.entrySet()){

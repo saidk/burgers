@@ -19,7 +19,7 @@ public class HelloController {
     public String welcome(Model model) {
         List<Photo> photos = burgerPhotosService.getBurgerPhotos();
         model.addAttribute("photos", photos);
-        return "welcome";
+        return "index";
     }
 
 }
